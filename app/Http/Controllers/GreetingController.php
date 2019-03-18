@@ -10,6 +10,7 @@ class GreetingController extends Controller
     {
         return view('word');
     }
+
     public function sayHello(Request $request)
     {
         $words = $request->input('words');

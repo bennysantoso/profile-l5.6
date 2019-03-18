@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Customer;
+use App\Http\Requests\RegisterForm;
 use Illuminate\Http\Request;
 use DB;
+use Validator;
+use Log;
 
 class ProfileController extends Controller
 {
@@ -55,7 +58,27 @@ class ProfileController extends Controller
 
         return "Halaman ini telah diakses sebanyak " . $total_access . " kali.";
     }
+
+    public function showRegister()
+    {
+        return view('register');
+    }
+
+    public function registerFormUser(RegisterForm $request)
+    {
+        Log::emergency("One");
+        Log::alert("Two");
+        Log::critical("Three");
+        Log::error("Four");
+        Log::warning("Five");
+        Log::notice("Six");
+        Log::info("Seven");
+        Log::debug("Eight");
+
+        return redirect('/');
+    }
 }
+
 
 
 

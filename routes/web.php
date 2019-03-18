@@ -30,3 +30,6 @@ Route::get('test-token', ['middleware' => 'token', 'uses' => 'ProfileController@
 Route::get('test-log', ['middleware' => 'log', 'uses' => 'ProfileController@showName']);
 Route::get('test-email', 'EmailController@sendEmailReminder');
 
+Route::get('showregister', 'ProfileController@showRegister');
+Route::post('registerform', 'ProfileController@registerFormUser');
+
