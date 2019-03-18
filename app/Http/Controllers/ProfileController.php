@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use Illuminate\Http\Request;
+use DB;
 
 class ProfileController extends Controller
 {
@@ -12,6 +13,11 @@ class ProfileController extends Controller
         $name = "Benny Santoso";
 
         $customer = Customer::all();
+
+        $newCustomer = Customer::find(1);
+        $newCustomer->name = "Nama saya";
+        $newCustomer->address = "Nama saya";
+        $newCustomer->save();
 
         $data = [
             'myname' => $name,
@@ -38,15 +44,16 @@ class ProfileController extends Controller
           'customer' => $customer
         ];
 
-        $newName = "ANDY HARTANTA";
-
-        if(empty($customer->where('name', $newName)->first())) {
-            $newCustomer = new Customer();
-            $newCustomer->name = $newName;
-            $newCustomer->save();
-        }
-
         return view('selectedcustomer', $data);
+    }
+
+    public function logTest(Request $request)
+    {
+        $total_access = DB::table('logs')
+                ->where('path', $request->path())
+                ->count();
+
+        return "Halaman ini telah diakses sebanyak " . $total_access . " kali.";
     }
 }
 

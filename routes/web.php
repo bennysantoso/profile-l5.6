@@ -22,4 +22,11 @@ Route::get('customer', 'ProfileController@showCustomerName');
 Route::get('customer/{id}', 'ProfileController@showSelectedCustomerName');
 
 Route::get('showgreeting', 'GreetingController@showGreeting');
+
 Route::post('sayhello', 'GreetingController@sayHello');
+
+
+Route::get('test-token', ['middleware' => 'token', 'uses' => 'ProfileController@showName']);
+Route::get('test-log', ['middleware' => 'log', 'uses' => 'ProfileController@showName']);
+Route::get('test-email', 'EmailController@sendEmailReminder');
+
