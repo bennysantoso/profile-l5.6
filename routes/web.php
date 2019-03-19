@@ -27,7 +27,7 @@ Route::post('sayhello', 'GreetingController@sayHello');
 
 
 Route::get('test-token', ['middleware' => 'token', 'uses' => 'ProfileController@showName']);
-Route::get('test-log', ['middleware' => 'log', 'uses' => 'ProfileController@showName']);
+Route::get('test-log', ['middleware' => 'log', 'uses' => 'ProfileController@logTest']);
 Route::get('test-email', 'EmailController@sendEmailReminder');
 
 Route::get('showregister', 'ProfileController@showRegister');
